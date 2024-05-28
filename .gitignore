@@ -1,6 +1,7 @@
 *.zip
 *.spec
 apps.txt
+exclusions.txt
 logs.txt
 build/
 dist/
