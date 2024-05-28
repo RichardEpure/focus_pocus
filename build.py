@@ -14,7 +14,7 @@ def copytree(src, dst, symlinks=False, ignore=None):
 
 
 # remove all contents from dist folder
-shutil.rmtree("dist")
+shutil.rmtree("dist", ignore_errors=True)
 
 # run pyinstaller for hid_sender.pyw
 subprocess.run(["pyinstaller", "hid_sender.pyw"])
