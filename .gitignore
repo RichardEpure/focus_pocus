@@ -1,0 +1,7 @@
+*.zip
+*.spec
+apps.txt
+logs.txt
+build/
+dist/
+env/
