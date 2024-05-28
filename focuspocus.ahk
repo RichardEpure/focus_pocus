@@ -84,11 +84,16 @@ $f3::{
 
     winTitle := WinGetTitle("A")
     winClass := WinGetClass("A")
-    app := InputBox(winTitle . delimiter . winClass).value
-    if (app == "") {
+    appNameInput := InputBox(winTitle . delimiter . winClass)
+    if (appNameInput.Result == "Cancel") {
+        addingApplication := false
+        return
+    }
+    appName := appNameInput.value
+    if (appName == "") {
         FileAppend winTitle . delimiter . winClass . "`n", A_ScriptDir . "\apps.txt"
     } else {
-        FileAppend app . "`n", A_ScriptDir . "\apps.txt"
+        FileAppend appName . "`n", A_ScriptDir . "\apps.txt"
     }
     appList := FileRead(appListPath)
     addingApplication := false
