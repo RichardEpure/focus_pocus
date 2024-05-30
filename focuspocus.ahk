@@ -108,7 +108,7 @@ $f3::{
 
     winTitle := WinGetTitle("A")
     winClass := WinGetClass("A")
-    appNameInput := InputBox("App title: " . winTitle . " - App class: " . winClass)
+    appNameInput := InputBox("Add application`nTitle: " . winTitle . "`nClass: " . winClass)
     if (appNameInput.Result == "Cancel") {
         addingApplication := false
         return
@@ -134,7 +134,7 @@ $f4::{
 
     winTitle := WinGetTitle("A")
     winClass := WinGetClass("A")
-    appNameInput := InputBox("App title: " . winTitle . " - App class: " . winClass)
+    appNameInput := InputBox("Exclude application`nTitle: " . winTitle . "`nClass: " . winClass)
     if (appNameInput.Result == "Cancel") {
         excludingApplication := false
         return
