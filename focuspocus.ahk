@@ -41,8 +41,8 @@ WatchActiveWindow()
     Global winTitle, winClass, isGamingLayer, baseLayerCode, gamingLayerCode, counter
 
     if (WinExist("A")) {
-        newWinTitle := WinGetTitle("A")
-        newWinClass := WinGetClass("A")
+        newWinTitle := WinGetTitle()
+        newWinClass := WinGetClass()
         if (newWinTitle == winTitle && newWinClass == winClass) {
             counter++ ; Sometimes alt-tabbing too fast might result in layers not changing
         }
@@ -106,8 +106,8 @@ $f3::{
         return
     }
 
-    winTitle := WinGetTitle("A")
-    winClass := WinGetClass("A")
+    winTitle := WinGetTitle()
+    winClass := WinGetClass()
     appNameInput := InputBox("Add application`nTitle: " . winTitle . "`nClass: " . winClass)
     if (appNameInput.Result == "Cancel") {
         addingApplication := false
@@ -132,8 +132,8 @@ $f4::{
         return
     }
 
-    winTitle := WinGetTitle("A")
-    winClass := WinGetClass("A")
+    winTitle := WinGetTitle()
+    winClass := WinGetClass()
     appNameInput := InputBox("Exclude application`nTitle: " . winTitle . "`nClass: " . winClass)
     if (appNameInput.Result == "Cancel") {
         excludingApplication := false
