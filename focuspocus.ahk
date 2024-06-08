@@ -65,6 +65,10 @@ WatchActiveWindow()
 
         for exclusion in GetExclusions() {
             if (exclusion != "" && (InStr(winTitle, exclusion) || InStr(winClass, exclusion))) {
+                if (isGamingLayer) {
+                    RunWait(hidScriptPath . " " . baseLayerCode)
+                    isGamingLayer := false
+                }
                 return
             }
         }
