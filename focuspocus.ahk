@@ -41,8 +41,17 @@ WatchActiveWindow()
     Global winTitle, winClass, isGamingLayer, baseLayerCode, gamingLayerCode, counter
 
     if (WinExist("A")) {
-        newWinTitle := WinGetTitle()
-        newWinClass := WinGetClass()
+        try {
+            newWinTitle := WinGetTitle()
+            newWinClass := WinGetClass()
+        } catch TargetError as e {
+            if (isGamingLayer) {
+                RunWait(hidScriptPath . " " . baseLayerCode)
+                isGamingLayer := false
+                return
+            }
+        }
+
         if (newWinTitle == winTitle && newWinClass == winClass) {
             counter++ ; Sometimes alt-tabbing too fast might result in layers not changing
         }
