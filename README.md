@@ -1,5 +1,7 @@
 # Project setup
-*Requires [python 3.11+](https://www.python.org/downloads/) and [Autohotkey v2](https://www.autohotkey.com/)*
+
+_Requires [python 3.11+](https://www.python.org/downloads/) and [Autohotkey v2](https://www.autohotkey.com/)_
+
 1. `git clone` repo-url
 2. `py -m venv env`
 3. `.\env\Scripts\activate`
@@ -7,9 +9,11 @@
 5. `py build.py`
 
 # Listening for hid data via QMK
+
 You can refer to the [QMK docs](https://docs.qmk.fm/#/feature_rawhid?id=raw-hid) for detailed information.
 Personally I only need to switch from my base layer to my gaming layer (or vice versa) so this code snippet is all I needed
-to add to my `keymap.c` file. *Note that I'm using Vial which requires me to use `raw_hid_receive_kb` instead of the standard `raw_hid_receive`.*
+to add to my `keymap.c` file. _Note that I'm using Vial which requires me to use `raw_hid_receive_kb` instead of the standard `raw_hid_receive`._
+
 ```c
 void raw_hid_receive_kb(uint8_t *data, uint8_t length) {
     if (data[0] == 0x87) {
@@ -19,6 +23,7 @@ void raw_hid_receive_kb(uint8_t *data, uint8_t length) {
     }
 }
 ```
+
 You will also need to add `RAW_ENABLE = yes` to your `rules.mk`.
 
 The python script `hid_sender.pyw` can then be used to send arbitrary data to your keyboard which you can program to do anything.
@@ -26,6 +31,7 @@ The python script `hid_sender.pyw` can then be used to send arbitrary data to yo
 You will also need to know how to compile and flash your keyboard firmware so that these changes can take effect.
 
 # Usage
+
 - Make sure to go through the project setup
 - Make sure you've flashed your keyboard firmware so it's listening for data sent via hid.
 - Run the autohotkey script `focuspocus.ahk`
